@@ -25,4 +25,19 @@ export class CardListComponent implements OnInit {
       this.cardList = data
     })
   }
+
+  cardDetails(id: number){
+    this.router.navigate(['card-details', id])
+  }
+
+  updateCard(id: number){
+    this.router.navigate(['update-card', id])
+  }
+  deleteCard(id: number){
+    this.cardservice.deleteCard(id).subscribe(data => {
+      console.log(data);
+      this.getCardList();
+    })
+  }
+
 }

@@ -1,4 +1,5 @@
 export class Card {
+  id : number;
   code: string;
   name: string;
   date: Date;
