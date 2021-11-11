@@ -1,0 +1,27 @@
+<h3> Карточка детали</h3>
+<div>
+  <div>
+    <label> <b> Код: </b></label> {{card.code}}
+  </div>
+  <div>
+    <label> <b> Имя: </b></label> {{card.name}}
+  </div>
+  <div>
+    <label> <b> Дата: </b></label> {{card.date}}
+  </div>
+  <div>
+    <label> <b> Дата заведения: </b></label> {{card.date_of_issue}}
+  </div>
+  <div>
+    <label> <b> Инвентарный номер: </b></label> {{card.inventory_number}}
+  </div>
+
+  <ul>
+    <li *ngFor="let abonent of card.abonents">
+      {{ abonent.name }}
+    </li>
+  </ul>
+
+
+
+</div>

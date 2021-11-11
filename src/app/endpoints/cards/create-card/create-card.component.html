@@ -1,0 +1,85 @@
+<div class="row" xmlns="http://www.w3.org/1999/html">
+  <div class="card col-md-6 offset-md-3 offset-md-3">
+    <div class="row">
+      <h3 class="text-center"> Create Card </h3>
+      <hr/>
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit()"
+              (change)="onChange()">
+
+          <div class="form-group">
+            <label> CODE </label>
+            <input type="text" class="form-control" id="code" [(ngModel)]="card.code"
+                   name="code">
+          </div>
+
+          <div class="form-group">
+            <label> Name </label>
+            <input type="text" class="form-control" id="Name" [(ngModel)]="card.name"
+                   name="Name">
+          </div>
+
+          <div class="form-group">
+            <label> inv_number</label>
+            <input type="text" class="form-control" id="inventory_number" [(ngModel)]="card.inventory_number"
+                   name="inventory_number">
+          </div>
+
+          <div class="form-group">
+            <label> Тип </label>
+            <select class="form-control" name="type" [(ngModel)]="card.type">
+              <option value="true">Активна</option>
+              <option value="false">Неактивна</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label> Абонент </label>
+            <ngx-bootstrap-multiselect
+              name="abonent"
+              [texts]="myTexts"
+              [settings]="mySettings"
+              [options]="abonents"
+              [(ngModel)]="optionsModel"
+              (ngModelChange)="onChange()"
+            ></ngx-bootstrap-multiselect>
+
+          </div>
+
+          <div class="form-group">
+            <label> Дата</label>
+            <input type="text" class="form-control" id="date"
+                   bsDatepicker
+                   [bsConfig]="{ isAnimated: true, dateInputFormat: 'YYYY-MM-DD' }"
+                   [(ngModel)]="card.date"
+                   name="date">
+          </div>
+          <div class="form-group">
+            <label> Дата выдачи</label>
+            <input type="text" class="form-control" id="date_of_issue"
+                   bsDatepicker
+                   [bsConfig]="{ isAnimated: true, dateInputFormat: 'YYYY-MM-DD' }"
+                   [(ngModel)]="card.date_of_issue"
+                   name="date_of_issue">
+          </div>
+
+
+          <div class="form-group">
+            <label for="file">Приложить документ </label>
+            <input type="file"
+                   id="file"
+                   name="file"
+                   (change)="handleFileChange($event)">
+          </div>
+
+
+          <br/>
+          <button class="btn btn-success" type="submit"
+                  [disabled]="!allowSubmit">Submit
+          </button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
