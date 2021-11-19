@@ -26,6 +26,10 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatButtonModule} from "@angular/material/button";
 import {MatTableModule} from "@angular/material/table";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatInputModule} from "@angular/material/input";
+import {MatSortModule} from "@angular/material/sort";
 
 
 //export const ENVIRONMENT = new InjectionToken<{ [key: string]: any }>('environment');
@@ -81,9 +85,13 @@ defineLocale('ru', ruLocale);
     MatButtonModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatTableModule
+    MatTableModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatSortModule
   ],
-  providers: [/*{provide: ENVIRONMENT, useValue: environment}*/],
+  providers: [/*{provide: ENVIRONMENT, useValue: environment}*/ ],
   bootstrap: [AppComponent]
 })
 

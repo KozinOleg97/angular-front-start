@@ -1,79 +1,69 @@
-
-
 <div class="row">
   <h2> Card List</h2>
 </div>
 
+<mat-form-field appearance="standard">
+  <mat-label>Поиск</mat-label>
+  <input matInput (keyup)="applyFilter($event)" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID</th>
+      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+    </ng-container>
+
+    <!-- name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Имя</th>
+      <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+    </ng-container>
+
+    <!-- code Column -->
+    <ng-container matColumnDef="code">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Код</th>
+      <td mat-cell *matCellDef="let row"> {{row.code}} </td>
+    </ng-container>
+
+    <!-- inventory_number Column -->
+    <ng-container matColumnDef="inventory_number">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Инв. номер</th>
+      <td mat-cell *matCellDef="let row"> {{row.inventory_number}} </td>
+    </ng-container>
+
+    <!-- date Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Дата</th>
+      <td mat-cell *matCellDef="let row"> {{this.datePipe.transform(row.date, 'dd/MM/yyyy')}} </td>
+    </ng-container>
+
+    <!-- date_of_issue Column -->
+    <ng-container matColumnDef="date_of_issue">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Дата заведения</th>
+      <td mat-cell *matCellDef="let row"> {{this.datePipe.transform(row.date_of_issue, 'dd/MM/yyyy')}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-button (click)="this.cardDetails(row.id)" >Edit</button>
+      </mat-cell>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[20, 50, 100, 200, 500, 1000]" aria-label="Select page of users"></mat-paginator>
+</div>
 
 
 
-<table mat-table [dataSource]="cardList" class="mat-elevation-z8">
-
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-
-  <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef> Название </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  </ng-container>
-
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Код </th>
-    <td mat-cell *matCellDef="let element"> {{element.code}} </td>
-  </ng-container>
-
-  <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <th mat-header-cell *matHeaderCellDef> Дата </th>
-    <td mat-cell *matCellDef="let element"> {{element.date}} </td>
-  </ng-container>
-
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef>  Дата заведения </th>
-    <td mat-cell *matCellDef="let element"> {{element.date_of_issue}} </td>
-  </ng-container>
-
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbo2l">
-    <th mat-header-cell *matHeaderCellDef> Инв. номер </th>
-    <td mat-cell *matCellDef="let element"> {{element.inventory_number}} </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-
-
-
-
-<table class="table table-striped table-bordered">
-  <thead>
-  <tr>
-    <th> ID</th>
-    <th> Код</th>
-    <th> Имя</th>
-    <th> Дата</th>
-    <th> Дата заведения</th>
-    <th> Инв. номер</th>
-    <th> Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let card of cardList">
-    <td> {{ card.id }} </td>
-    <td> {{ card.code }} </td>
-    <td> {{ card.name }} </td>
-    <td> {{ card.date }} </td>
-    <td> {{ card.date_of_issue }} </td>
-    <td> {{ card.inventory_number }} </td>
-    <td>
-      <button (click)="updateCard(card.id)" class="btn btn-primary"> Update</button>
-      <button (click)="deleteCard(card.id)" class="btn btn-danger" style="margin-left: 10px"> Delete</button>
-      <button (click)="cardDetails(card.id)" class="btn btn-primary" style="margin-left: 10px"> View</button>
-    </td>
-  </tr>
-  </tbody>
-</table>
