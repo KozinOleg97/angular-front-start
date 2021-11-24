@@ -30,6 +30,9 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatInputModule} from "@angular/material/input";
 import {MatSortModule} from "@angular/material/sort";
+import {MatDialogModule} from "@angular/material/dialog";
+import {CorrectionAddDialogComponent} from "./endpoints/corrections/correction-add-dialog/correction-add-dialog.component";
+import { AbonentAddDialogComponent } from './endpoints/abonents/abonent-add-dialog/abonent-add-dialog.component';
 
 
 //export const ENVIRONMENT = new InjectionToken<{ [key: string]: any }>('environment');
@@ -62,6 +65,9 @@ defineLocale('ru', ruLocale);
     CardDetailsComponent,
     CreateAbonentComponent,
     AbonentListComponent,
+    CorrectionAddDialogComponent,
+    AbonentAddDialogComponent,
+
 
 
   ],
@@ -89,10 +95,12 @@ defineLocale('ru', ruLocale);
     MatFormFieldModule,
     MatPaginatorModule,
     MatInputModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule
   ],
   providers: [/*{provide: ENVIRONMENT, useValue: environment}*/ ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CorrectionAddDialogComponent]
 })
 
 export class AppModule {

@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Добавить абонента</h2>
+
+<mat-dialog-content>
+
+
+  <div class="form-group">
+    <label> Абонент </label>
+    <ngx-bootstrap-multiselect
+      name="abonent"
+      [texts]="myTexts"
+      [settings]="mySettings"
+      [options]="abonents"
+      [(ngModel)]="optionsModel"
+      (ngModelChange)="onChange()"
+    ></ngx-bootstrap-multiselect>
+
+  </div>
+
+</mat-dialog-content>
+
+
+<mat-dialog-actions>
+  <button class="mat-raised-button" (click)="close()">Close</button>
+  <button class="mat-raised-button mat-primary" (click)="submit()">Save</button>
+</mat-dialog-actions>

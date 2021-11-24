@@ -7,6 +7,7 @@ import {error} from "@angular/compiler/src/util";
 import {IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts} from "ngx-bootstrap-multiselect";
 import {AbonentsService} from "../../abonents/abonents.service";
 import {Abonent} from "../../../data-types/abonent";
+import {Document} from "../../../data-types/document"
 
 @Component({
   selector: 'app-create-card',
@@ -90,19 +91,11 @@ export class CreateCardComponent implements OnInit {
      */
     if (this.file) {
       this.cardService.uploadFile(this.file).subscribe(uploadData => {
-          console.log(uploadData);
+
           this.card.doc.id = uploadData;
           console.log(`uploaded file id = ` + uploadData);
 
-          this.cardService.createCard(this.card).subscribe(data => {
-
-
-              console.log(`new card id = ` + data);
-              this.goToCardList();
-            },
-            //TODO добавить удаление загруженного файла при ошибке
-            error => console.log(error)
-          );
+          this.createCard();
 
         },
         error => console.log(error)
@@ -153,5 +146,17 @@ export class CreateCardComponent implements OnInit {
 
 
     }
+  }
+
+  private createCard() {
+    this.cardService.createCard(this.card).subscribe(data => {
+
+
+        console.log(`new card id = ` + data);
+        this.goToCardList();
+      },
+      //TODO добавить удаление загруженного файла при ошибке
+      error => console.log(error)
+    );
   }
 }

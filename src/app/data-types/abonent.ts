@@ -10,4 +10,7 @@ export class Abonent {
   wr_off: Date;
   cards: Card[];
 
+
+
+
 }

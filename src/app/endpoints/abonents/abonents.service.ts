@@ -20,6 +20,12 @@ export class AbonentsService {
     return this.httpClient.get<Abonent[]>(`${this.baseURL}/abonents`)
   }
 
+  //TODO не приходят запрос на сервер
+  addAbonentToCard(id: number, abonentIdList: number[]): Observable<Object>{
+    console.log(id  +"   aaaaaaaaaaaaaaaaaaaaaaaaa  " + abonentIdList );
+    return this.httpClient.post<number>(`${this.baseURL}/abonents/${id}`, abonentIdList)
+  }
+
   createAbonent(abonent: Abonent): Observable<number> {
     //card.date_of_issue = Date.now().toString();
     return this.httpClient.post<number>(`${this.baseURL}/abonents`, abonent);

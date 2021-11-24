@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>Добавить изменение</h2>
+
+<div mat-dialog-content>
+
+  <div class="form-group">
+    <label> Код </label>
+    <input type="text" class="form-control" id="code" [(ngModel)]="correction.code"
+           name="code">
+  </div>
+
+  <div class="form-group">
+    <label> Метка(как назвать?) </label>
+    <input type="text" class="form-control" id="name" [(ngModel)]="correction.name"
+           name="code">
+  </div>
+
+
+  <div class="form-group">
+    <label> Дата(нужно ли это поле? или ставить текущую?)</label>
+    <input type="text" class="form-control" id="date"
+           bsDatepicker
+           [bsConfig]="{ isAnimated: true, dateInputFormat: 'YYYY-MM-DD' }"
+           [(ngModel)]="correction.date"
+           name="date">
+  </div>
+
+
+  <div class="form-group">
+    <label for="file">Приложить документ </label>
+    <input type="file"
+           id="file"
+           name="file"
+           (change)="handleFileChange($event)">
+  </div>
+
+</div>
+
+
+<mat-dialog-actions>
+  <button class="mat-raised-button" (click)="close()">Close</button>
+  <button class="mat-raised-button mat-primary" (click)="submit()">Save</button>
+</mat-dialog-actions>
