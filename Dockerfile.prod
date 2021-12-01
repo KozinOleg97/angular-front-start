@@ -1,0 +1,29 @@
+
+# docker build -f Dockerfile.prod -t angular-front-start:V1 .
+
+# docker run -p 8001:3000 --name cards-app-1 angular-front-start:V1
+# docker run -p 8001:3000 --name cards-app-1 angular-front-start:V1 npm start
+
+
+# docker run -p <External-port:exposed-port> -d --name <name of the container> <user-name>/<image-name>:<tag-name>
+
+
+
+FROM node:16.13.0 As build
+# Папки
+RUN mkdir /app && mkdir /src
+WORKDIR /src
+# Установка зависимостей package-lock.json и package.json
+COPY package*.json ./
+RUN npm install --production
+# Для использования в продакшне
+
+# Копирование файлов проекта и сборка проекта
+COPY . .
+RUN npm run build:production
+# В результате получается образ, состоящий из одного слоя
+FROM node:16.13.0-alpine
+# Копируем собранные файлы из папки build в папку app
+COPY --from=build ./src/build/* /app/
+ENTRYPOINT ["/app"]
+CMD ["--help"]

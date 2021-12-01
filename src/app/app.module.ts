@@ -19,7 +19,6 @@ import {deLocale} from 'ngx-bootstrap/locale';
 import {CreateAbonentComponent} from './endpoints/abonents/create-abonent/create-abonent.component';
 import {AbonentListComponent} from './endpoints/abonents/abonent-list/abonent-list.component';
 import {NgxBootstrapMultiselectModule} from "ngx-bootstrap-multiselect";
-import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatSidenavModule} from "@angular/material/sidenav";
@@ -32,7 +31,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatSortModule} from "@angular/material/sort";
 import {MatDialogModule} from "@angular/material/dialog";
 import {CorrectionAddDialogComponent} from "./endpoints/corrections/correction-add-dialog/correction-add-dialog.component";
-import { AbonentAddDialogComponent } from './endpoints/abonents/abonent-add-dialog/abonent-add-dialog.component';
+import {AbonentAddDialogComponent} from './endpoints/abonents/abonent-add-dialog/abonent-add-dialog.component';
 
 
 //export const ENVIRONMENT = new InjectionToken<{ [key: string]: any }>('environment');
@@ -69,7 +68,6 @@ defineLocale('ru', ruLocale);
     AbonentAddDialogComponent,
 
 
-
   ],
   imports: [
     BrowserModule,
@@ -79,7 +77,6 @@ defineLocale('ru', ruLocale);
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
     NgxBootstrapMultiselectModule,
-    NgxDatatableModule,
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
@@ -98,7 +95,7 @@ defineLocale('ru', ruLocale);
     MatSortModule,
     MatDialogModule
   ],
-  providers: [/*{provide: ENVIRONMENT, useValue: environment}*/ ],
+  providers: [/*{provide: ENVIRONMENT, useValue: environment}*/],
   bootstrap: [AppComponent],
   entryComponents: [CorrectionAddDialogComponent]
 })

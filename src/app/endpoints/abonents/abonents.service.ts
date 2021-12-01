@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Card} from "../../data-types/card";
 import {Abonent} from "../../data-types/abonent";
+import {AbonentList} from "../../data-types/abonent-list";
 
 
 @Injectable({
@@ -21,8 +22,11 @@ export class AbonentsService {
   }
 
   //TODO не приходят запрос на сервер
-  addAbonentToCard(id: number, abonentIdList: number[]): Observable<Object>{
-    console.log(id  +"   aaaaaaaaaaaaaaaaaaaaaaaaa  " + abonentIdList );
+  addAbonentToCard(id: number, abonentIdList: AbonentList): Observable<number> {
+    console.log(id + "   aaaaaaaaaaaaaaaaaaaaaaaaa  " + abonentIdList);
+
+    //const headers = new HttpHeaders({'Content-Type': 'application/json'});
+
     return this.httpClient.post<number>(`${this.baseURL}/abonents/${id}`, abonentIdList)
   }
 

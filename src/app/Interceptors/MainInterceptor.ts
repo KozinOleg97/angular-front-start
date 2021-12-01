@@ -16,11 +16,13 @@ export class MainInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
     const newReq = req.clone({
-      url : '',
+      url: '',
       // setHeaders: {'Content-Type': 'application/json'}
       //здесь задать необходимые заголовки
     });
+
 
     return next.handle(newReq).pipe(tap(
       (event) => {

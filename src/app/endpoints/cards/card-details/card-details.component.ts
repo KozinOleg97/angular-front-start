@@ -16,6 +16,7 @@ import {CorrectionAddDialogComponent} from "../../corrections/correction-add-dia
 import {CorrectionsService} from "../../corrections.service";
 import {Document} from "../../../data-types/document"
 import {AbonentAddDialogComponent} from "../../abonents/abonent-add-dialog/abonent-add-dialog.component";
+import {AbonentList} from "../../../data-types/abonent-list";
 
 
 @Component({
@@ -194,8 +195,11 @@ export class CardDetailsComponent implements OnInit {
 
         console.log(data)
 
+        let list: AbonentList = new AbonentList();
+        list.abonent_ids = data;
+        console.log(list.abonent_ids)
         //добавляем абонентов к карточке
-        this.abonentService.addAbonentToCard(this.id, data);
+        this.abonentService.addAbonentToCard(this.id, list);
 
 
         // console.log("Dialog output:", data)
