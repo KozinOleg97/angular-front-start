@@ -93,7 +93,8 @@ defineLocale('ru', ruLocale);
     MatPaginatorModule,
     MatInputModule,
     MatSortModule,
-    MatDialogModule
+    MatDialogModule,
+
   ],
   providers: [/*{provide: ENVIRONMENT, useValue: environment}*/],
   bootstrap: [AppComponent],

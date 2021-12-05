@@ -79,7 +79,7 @@
           </mat-form-field>
 
           <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSourceAbonents" matSort>
+            <table mat-table #abonents [dataSource]="dataSourceAbonents" matSort>
 
               <!-- ID Column -->
               <ng-container matColumnDef="id">
@@ -122,7 +122,7 @@
               </tr>
             </table>
 
-            <mat-paginator [pageSizeOptions]="[5, 10, 20, 50]" aria-label="Select page of users"></mat-paginator>
+            <mat-paginator #paginatorAbonents [pageSizeOptions]="[5, 10, 20, 50]" aria-label="Select page of users"></mat-paginator>
           </div>
         </td>
 
@@ -145,7 +145,7 @@
           </mat-form-field>
 
           <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSourceCorrections" matSort>
+            <table mat-table #corrections [dataSource]="dataSourceCorrections" matSort>
 
               <!-- ID Column -->
               <ng-container matColumnDef="id">
@@ -198,7 +198,7 @@
               </tr>
             </table>
 
-            <mat-paginator [pageSizeOptions]="[5, 10, 20, 50]" aria-label="Select page of users"></mat-paginator>
+            <mat-paginator #paginatorCorrections [pageSizeOptions]="[5, 10, 20, 50]" aria-label="Select page of corrections"></mat-paginator>
           </div>
 
 

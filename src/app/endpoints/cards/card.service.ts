@@ -50,6 +50,23 @@ export class CardService {
 
     return this.httpClient.post<number>(`${this.baseURL}/files`, formData, {headers: headers});
   }
+
+
+  // downloadFile(id: number): Observable<Blob> {
+  //   let options = new RequestOptions({responseType: });
+  //   return this.http.get(this._baseUrl + '/' + id, options)
+  //     .map(res => res.blob())
+  //     .catch(this.handleError)
+  // }
+
+  // async downloadLargeFile(id: number): Promise<ArrayBuffer> {
+  //   return await this.httpClient.get(`${this.baseURL}/ `, {
+  //     responseType: "arraybuffer",
+  //   }).pipe(map((file: ArrayBuffer) => {
+  //     return file;
+  //   })).toPromise
+  // }
+
 }
 
 

@@ -54,8 +54,11 @@ export class CardDetailsComponent implements OnInit {
   dataSourceCorrections: MatTableDataSource<Correction>;
   displayedColumnsCorrections: string[] = [`name`, `code`, `date`, `actions`, `download`];
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild('paginatorAbonents') paginatorAbonent: MatPaginator;
+  @ViewChild('abonents', {read: MatSort, static: true}) sortAbonent: MatSort;
+
+  @ViewChild('paginatorCorrections') paginatorCorrection: MatPaginator;
+  @ViewChild('corrections', {read: MatSort, static: true}) sortCorrection: MatSort;
 
 
   // Settings configuration
@@ -108,14 +111,13 @@ export class CardDetailsComponent implements OnInit {
 
 
         this.dataSourceAbonents = new MatTableDataSource(this.card.abonents);
-
-        this.dataSourceAbonents.paginator = this.paginator;
-        this.dataSourceAbonents.sort = this.sort;
+        this.dataSourceAbonents.paginator = this.paginatorAbonent;
+        this.dataSourceAbonents.sort = this.sortAbonent;
 
 
         this.dataSourceCorrections = new MatTableDataSource(this.card.corrections);
-        this.dataSourceCorrections.paginator = this.paginator;
-        this.dataSourceCorrections.sort = this.sort;
+        this.dataSourceCorrections.paginator = this.paginatorCorrection;
+        this.dataSourceCorrections.sort = this.sortCorrection;
 
 
       },
@@ -230,6 +232,28 @@ export class CardDetailsComponent implements OnInit {
   }
 
   correctionDownloadFile(id: number) {
+
+
+    window.location.href=`http://localhost:8080/api/v1/files/download/${id}`;
+
+    // this.cardService.downloadFile(id).subscribe(blob => {
+    //
+    // })
+
+    // this.cardService.downloadLargeFile(id).then(
+    //   res => {
+    //
+    //     FileSaver.saveAs
+    //     const filename = `file_download_${datetimestamp}.csv`;
+    //     let blob = new Blob([res], {type: 'text/csv'});
+    //     saveAs(blob, filename);
+    //   },
+    //   err => {
+    //     alert("Error while downloading the file.");
+    //     console.error(err);
+    //   }
+    // );
+
 
   }
 
