@@ -1,3 +1,6 @@
+#docker run -p 8081:4200 angular-front-start:V1
+
+
 FROM node:16.13.0
 
 WORKDIR /app/front
@@ -9,7 +12,7 @@ COPY . .
 RUN npm install
 RUN npm install -g @angular/cli
 
-EXPOSE  8081
+EXPOSE  4200
 # Angular installation if it fails,
 
 CMD ["ng", "serve", "--host", "0.0.0.0"]
