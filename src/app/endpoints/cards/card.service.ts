@@ -17,7 +17,7 @@ export class CardService {
   }
 
 
-  private baseURL = "http://localhost:8080/api/v1";
+  private baseURL = "http://192.168.1.157:8080/api/v1";
 
   getCardList(): Observable<Card[]> {
     return this.httpClient.get<Card[]>(`${this.baseURL}/cards`)

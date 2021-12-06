@@ -13,7 +13,7 @@ export class CorrectionsService {
   }
 
 
-  private baseURL = "http://localhost:8080/api/v1";
+  private baseURL = "http://192.168.1.157:8080/api/v1";
 
 
   addCorrection(card_id: number, correction: Correction): Observable<number> {

@@ -14,7 +14,7 @@ export class AbonentsService {
   constructor(private httpClient: HttpClient) {
   }
 
-  private baseURL = "http://localhost:8080/api/v1";
+  private baseURL = "http://192.168.1.157:8080/api/v1";
 
 
   getAbonentList(): Observable<Abonent[]> {
